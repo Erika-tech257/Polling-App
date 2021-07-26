@@ -67,7 +67,6 @@ function App() {
             <Redirect to="/notFound" />
           </Switch>
         </div>
-      </header>
     </main>
   );
 }
