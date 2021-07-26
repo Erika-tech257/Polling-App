@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Button } from 'reactstrap';
-import { withAuth } from '../../Common/Utility';
 class CreatePollQuestions extends Component {
   constructor(props) {
     super(props);

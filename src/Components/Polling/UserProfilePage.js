@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import {withAuth} from '../../Common/Utility'
-
 class UserProfilePage extends Component {
   constructor(props) {
     super(props);
@@ -9,7 +7,7 @@ class UserProfilePage extends Component {
   }
   render() {
     return (
-      <div>
+      <div className="App-header">
         <h2 className="mb-5 welcome-title">Welcome Back, Nick</h2>
 
         <input className="input" type="text" placeholder="Department" />
@@ -19,10 +17,10 @@ class UserProfilePage extends Component {
         
         <h4>
           {' '}
-          <Link href="#">Current</Link> Poll
+          <Link to="#">Current</Link> Poll
         </h4>
         <h4>
-          <Link href="#">Completed Polls</Link> Results
+          <Link to="#">Completed Polls</Link> Results
         </h4>
       </div>
     );

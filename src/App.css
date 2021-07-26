@@ -88,3 +88,26 @@ main.container {
   text-align: center;
   font-size: 14px;
 }
+
+.admin-initials {
+  border-radius: 50%;
+  padding: 30px;
+  background-color: lightgray;
+  display: inline-block;
+}
+
+.admin-page-font-size {
+  font-size: 20px;
+}
+
+.margin-1 {
+  margin-left: -130px;
+}
+
+.margin-2 {
+  margin-left: -50px;
+}
+
+.margin-3 {
+  margin-left: -168px;
+}

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import "./SignIn.css";
-import SignUp from "./SignUp";
 import { Button } from "reactstrap";
 import { FaUserCircle, FaLock } from "react-icons/fa";
 import GoogleButton from "react-google-button";
@@ -33,20 +32,20 @@ const SignIn = (props) => {
   };
 
   return (
-    <div className="mainDiv">
+    <div className="mainDiv App-header">
       <header className="sub-title">Login</header>
       <br />
       <div>
         <form className="signin">
           {/* <h2>Register Form</h2> */}
 
-          <div class="input-container">
-            <i class="fa fa-user icon">
+          <div className="input-container">
+            <i className="fa fa-user icon">
               {" "}
               <FaUserCircle />
             </i>
             <input
-              class="input-field"
+              className="input-field"
               type="text"
               placeholder="Username"
               name="username"
@@ -55,13 +54,13 @@ const SignIn = (props) => {
             />
           </div>
 
-          <div class="input-container">
-            <i class="fa fa-key icon">
+          <div className="input-container">
+            <i className="fa fa-key icon">
               {" "}
               <FaLock />
             </i>
             <input
-              class="input-field"
+              className="input-field"
               type="password"
               placeholder="Password"
               name="password"
@@ -81,9 +80,9 @@ const SignIn = (props) => {
           </div>
           <br />
 
-          <div class="container">
-            <div class="row">
-              <div class="col text-center">
+          <div className="container">
+            <div className="row">
+              <div className="col text-center">
                 <Button
                   className="btn btn-default btn-lg btn-submit mb-2"
                   type="submit"
