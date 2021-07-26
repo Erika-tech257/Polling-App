@@ -2,14 +2,8 @@ import React, { useState } from "react";
 import "./SignIn.css";
 import SignUp from "./SignUp";
 import { Button } from "reactstrap";
-import {
-  FaUserCircle,
-  FaLock,
-  FaFacebook,
-  FaGoogle,
-  FaLinkedinIn,
-  FaTwitter,
-} from "react-icons/fa";
+import { FaUserCircle, FaLock } from "react-icons/fa";
+import GoogleButton from "react-google-button";
 // import { createAuthIdentity, getHomePage } from "../../Common/Utility";
 
 const SignIn = (props) => {
@@ -19,7 +13,8 @@ const SignIn = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const url = "";
+    const url =
+      "http://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/Api/token";
 
     const body = {
       username: username,
@@ -97,30 +92,21 @@ const SignIn = (props) => {
                   Sign In
                 </Button>
                 <br />
-                <div className = "flex-containertwo">
-                  <div className = "lines">
-                <p className="or">or</p>
+                <div className="flex-containertwo">
+                  <div className="lines">
+                    <p className="or">or</p>
+                  </div>
                 </div>
-                </div>
-                <p className="signbtn">Sign In Using </p>
-                <span className="twittericon">
-                  <FaTwitter />
-                </span>
-                <span className="linkicon">
-                  <FaLinkedinIn />
-                </span>
-                <span className="facebookicon">
-                  <FaFacebook />
-                </span>
-                <span className="googleicon">
-                  <FaGoogle />
+                <span className="googlebtn">
+                  <GoogleButton
+                    onClick={() => {
+                      console.log("Google button clicked");
+                    }}
+                  />
                 </span>
                 <div className="flex-container">
                   <h6> Don't Have An Account? </h6>
-                  <Button className="accountLink" onClick = {handleSubmit}>
-                    {" "}
-                    Create Account
-                  </Button>
+                  <p className="createLink"><a href ="http://localhost:3000/signup ">Create Account</a></p>
                 </div>
               </div>
             </div>

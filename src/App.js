@@ -13,6 +13,7 @@ import DefaultLayout from './Layouts/Default/DefaultLayout';
 import NotFound from './Common/NotFound';
 import AppRoute from './Layouts/AppRoute';
 
+
 function App() {
   const getUserLayout = () => (getIsAdmin() ? AdminLayout : DefaultLayout);
 
@@ -32,9 +33,9 @@ function App() {
               path="/signup"
               component={SignUp}
               layout={GuestLayout}
-            />
+            /> 
             {/* grab user's name using route parameters */}
-            <AppRoute
+             <AppRoute
               exact
               path="/userProfile/:name"
               component={UserProfilePage}
@@ -66,7 +67,10 @@ function App() {
             <Redirect from="/" exact to={getHomePage()} />
             <Redirect to="/notFound" />
           </Switch>
+         
+         
         </div>
+       
       </header>
     </main>
   );
