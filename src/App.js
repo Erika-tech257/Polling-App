@@ -13,6 +13,7 @@ import DefaultLayout from './Layouts/Default/DefaultLayout';
 import NotFound from './Common/NotFound';
 import AppRoute from './Layouts/AppRoute';
 
+
 function App() {
   const getUserLayout = () => (!isLoggedIn() ? GuestLayout: getIsAdmin() ? AdminLayout : DefaultLayout);
 
@@ -31,9 +32,9 @@ function App() {
               path="/signup"
               component={SignUp}
               layout={GuestLayout}
-            />
+            /> 
             {/* grab user's name using route parameters */}
-            <AppRoute
+             <AppRoute
               exact
               path="/userProfile/:name"
               component={UserProfilePage}

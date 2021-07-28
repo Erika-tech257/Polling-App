@@ -91,20 +91,12 @@ button.btn.btn-default.btn-lg.btn-submit.mb-2.btn-secondary{
 .lines::before{
   right: 0
 }
-
-.twittericon{
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.facebookicon{
-  padding-left: 1rem;
-  padding-right: 1rem;
-}
-
-.linkicon, .googleicon, .facebookicon, .twittericon  {
-  font-size: 2rem;
-  color:  #4285F4;
+ 
+.googlebtn{
+  position:relative;
+  display: flex;
+  justify-content: center;
+  
 }
 
 .flex-container {
@@ -115,15 +107,12 @@ button.btn.btn-default.btn-lg.btn-submit.mb-2.btn-secondary{
   top: 30px;
 }
 
-button.accountLink.btn.btn-secondary {
+.createLink{
   position: relative;
+  display: flex;
+  flex-wrap: nowrap;
   top: -4px;
-  left: 10px;
-  padding: 0px 0px;
+  left: 8px;
   font-size: 16px;
-  font-weight: bold;
-  border:none;
-  background-color: white;
-  color: darkblue;
 
 }
