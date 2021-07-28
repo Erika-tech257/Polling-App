@@ -92,11 +92,6 @@ const SignUp = (props) => {
         />
       </div>
 
-      <div className="container">
-        <div className="row">
-          <div className="col text-center">
-
-
       <div class="input-container">
         <i class="fa fa-key icon">
           {" "}
@@ -111,6 +106,7 @@ const SignUp = (props) => {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
       </div>
+
       <div className = "input-containerone">
         <p className = "admintext"> Enter 4 Digit Admin PIN </p>
         <input
@@ -122,6 +118,8 @@ const SignUp = (props) => {
         value = ""
         />
         </div>
+
+     
       <div class="container">
         <div class="row">
           <div class="col text-center">
@@ -162,6 +160,7 @@ const SignUp = (props) => {
           </div>
         </div>
       </div>
+
     </form>
     </div>
     </div>
