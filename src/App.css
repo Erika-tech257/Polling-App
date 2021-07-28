@@ -111,3 +111,7 @@ main.container {
 .margin-3 {
   margin-left: -168px;
 }
+
+footer.footer {
+  background-color: white;
+}
