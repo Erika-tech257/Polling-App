@@ -1,10 +1,8 @@
-import SignIn from "./SignIn";
 import "./Signup.css";
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { FaEnvelope, FaUserCircle, FaLock } from "react-icons/fa";
 import GoogleButton from "react-google-button";
-import AdminWelcomePage from "../Polling/AdminWelcomePage";
 
 const SignUp = (props) => {
   const [email, setEmail] = useState("");
