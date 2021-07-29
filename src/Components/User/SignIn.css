@@ -57,8 +57,11 @@ button.btn.btn-default.btn-lg.btn-submit.mb-2.btn-secondary{
 }
 .forgotPass{
   position: relative;
+  display: inline-flex;
+  flex-wrap: nowrap;
+  justify-content: row;
   top: 0px;
-  left: 28px;
+  left: 20px;
   font-size: 16px;
 }
 
