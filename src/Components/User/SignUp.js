@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { FaEnvelope, FaUserCircle, FaLock } from "react-icons/fa";
 import GoogleButton from "react-google-button";
+import AdminWelcomePage from "../Polling/AdminWelcomePage";
 
 const SignUp = (props) => {
   const [email, setEmail] = useState("");
@@ -33,6 +34,7 @@ const SignUp = (props) => {
     })
       .then((r) => r.json())
       .then((rObj) => props.updateToken(rObj.sessionToken, rObj.user.id));
+      window.location.replace("/adminWelcomePage/James");
   };
   return (
     <div className="mainDiv App-header">
