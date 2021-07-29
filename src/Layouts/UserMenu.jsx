@@ -1,3 +1,4 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import {
@@ -14,7 +15,7 @@ const UserMenu = (props) => {
       <NavItem>
         <UncontrolledDropdown nav inNavbar={props.inNavbar}>
           <DropdownToggle nav>
-            <i className="fa fa-2x fa-user-circle" />
+            <FontAwesomeIcon icon="user-circle" size="2x" />
           </DropdownToggle>
           <DropdownMenu right className="bg-dark p-0">
             <DropdownItem className="bg-dark m-0 p-0 text-center">

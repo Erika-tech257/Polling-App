@@ -1,29 +1,32 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Body from './Body';
 import PageContent from './PageContent';
 import SideBar from './SideBar';
 import TopNav from '../TopNav';
-import { withAuth } from '../../Common/Utility';
+import { isLoggedIn } from '../../Common/Utility';
+import { Redirect } from 'react-router-dom';
 
-class AdminLayout extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { collapsed: true };
-  }
-  render() {
-    return (
-      <div style={{ height: '100vh' }}>
-        <TopNav
-          collapsed={this.state.collapsed}
-          toggleNavbar={this.toggleNavbar}
-        ></TopNav>
-        <Body>
-          <SideBar collapsed={this.state.collapsed} />
-          <PageContent>{this.props.children}</PageContent>
-        </Body>
-      </div>
-    );
-  }
-}
+const AdminLayout = (props) => {
+  const [collapsed, setCollapsed] = useState(true);
+  const toggleNavbar = () => setCollapsed(!collapsed);
 
-export default withAuth(AdminLayout);
+  return (
+    <>
+      {isLoggedIn() ? (
+        <div style={{ height: '100vh' }}>
+          <TopNav collapsed={collapsed} toggleNavbar={toggleNavbar}></TopNav>
+          <Body>
+            <SideBar collapsed={collapsed} />
+            <PageContent>{props.children}</PageContent>
+          </Body>
+        </div>
+      ) : (
+        <>
+          <Redirect to="/signin" />
+        </>
+      )}
+    </>
+  );
+};
+
+export default AdminLayout;

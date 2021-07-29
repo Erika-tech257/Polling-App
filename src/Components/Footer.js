@@ -8,10 +8,10 @@ class Footer extends Component {
     render() { 
         const currentYear = new Date().getFullYear();
         return ( 
-            <footer class="footer">
-  <div class="content has-text-centered">
+            <footer className="footer">
+  <div className="content has-text-centered">
     <p>
-    ICP COPYRIGHT {currentYear}
+    @{currentYear} ICP Corp, Inc
     </p>
   </div>
 </footer>

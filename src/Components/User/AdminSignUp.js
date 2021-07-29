@@ -12,7 +12,7 @@ class AdminSignUP extends Component {
   }
   render() {
     return (
-      <div class="container">
+      <div className="container">
         <div className="row">
           <div className="col">
             <div className="dropdown">

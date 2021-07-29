@@ -1,25 +1,29 @@
-import React, {Component} from 'react';
+import React, { useState } from 'react';
 import TopNavBar from './TopNavBar';
 import Footer from '../../Components/Footer';
-import { withAuth } from '../../Common/Utility';
+import { isLoggedIn } from '../../Common/Utility';
+import { Redirect } from 'react-router-dom';
 
-class DefaultLayout extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { collapsed: true };
-  }
-  render() {
-    return (
-      <>
-        <TopNavBar
-          collapsed={this.state.collapsed}
-          toggleNavbar={this.toggleNavbar}
-        />
-        {this.props.children}
-        <Footer />
-      </>
-    );
-  }
-}
+const DefaultLayout = (props) => {
+  const [collapsed, setCollapsed] = useState(true);
 
-export default withAuth(DefaultLayout);
+  const toggleNavbar = () => setCollapsed(!collapsed);
+
+  return (
+    <>
+      {isLoggedIn() ? (
+        <>
+          <TopNavBar collapsed={collapsed} toggleNavbar={toggleNavbar} />
+          {props.children}
+          <Footer />
+        </>
+      ) : (
+        <>
+          <Redirect to="/signin" />
+        </>
+      )}
+    </>
+  );
+};
+
+export default DefaultLayout;
