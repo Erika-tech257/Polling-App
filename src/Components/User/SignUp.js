@@ -9,15 +9,22 @@ const SignUp = (props) => {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [fullName, setFullName] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
     const baseUrl =
-      "http://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/Api/Account/Register";
+      "https://localhost:44303/Api/Account/Register";
+    // const baseUrl =
+    //   "http://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/Api/Account/Register";
 
     const body = {
       fullName: fullName,
+      firstName: firstName,
+      lastName: lastName, 
       email: email,
       password: password,
       confirmPassword: confirmPassword,
@@ -32,7 +39,7 @@ const SignUp = (props) => {
     })
       .then((r) => r.json())
       .then((rObj) => props.updateToken(rObj.sessionToken, rObj.user.id));
-      window.location.replace("/adminWelcomePage/James");
+      //window.location.replace("/adminWelcomePage/James");
   };
   return (
     <div className="mainDiv App-header">
@@ -48,10 +55,25 @@ const SignUp = (props) => {
             <input
               class="input-field"
               type="text"
-              placeholder="First & Last Name"
-              name="fullName"
-              value={fullName}
-              onChange={(e) => setFullName(e.target.value)}
+              placeholder="First Name"
+              name="firstName"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
+            />
+          </div>
+
+          <div class="input-container">
+            <i class="fa fa-user icon">
+              {" "}
+              <FaUserCircle />
+            </i>
+            <input
+              class="input-field"
+              type="text"
+              placeholder="Last Name"
+              name="lastName"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
 
