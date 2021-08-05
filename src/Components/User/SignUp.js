@@ -8,7 +8,6 @@ const SignUp = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [fullName, setFullName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
@@ -22,7 +21,6 @@ const SignUp = (props) => {
     //   "http://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/Api/Account/Register";
 
     const body = {
-      fullName: fullName,
       firstName: firstName,
       lastName: lastName, 
       email: email,
