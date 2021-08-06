@@ -12,6 +12,7 @@ import GuestLayout from './Layouts/Guest/GuestLayout';
 import DefaultLayout from './Layouts/Default/DefaultLayout';
 import NotFound from './Common/NotFound';
 import AppRoute from './Layouts/AppRoute';
+import Footer from './Components/Footer';
 
 
 function App() {
@@ -20,7 +21,7 @@ function App() {
   return (
     <main className="container text-center">
         <div>
-          <Switch>
+            <Switch>
             <AppRoute
               exact
               path="/signin"
@@ -32,9 +33,9 @@ function App() {
               path="/signup"
               component={SignUp}
               layout={GuestLayout}
-            /> 
+            />  
             {/* grab user's name using route parameters */}
-             <AppRoute
+               <AppRoute
               exact
               path="/userProfile/:name"
               component={UserProfilePage}
@@ -50,7 +51,7 @@ function App() {
               exact
               path="/pollingQuestions"
               component={ViewCurrentPoll}
-              layout={DefaultLayout}
+              layout={GuestLayout}
             />
             <AppRoute
               exact
@@ -65,8 +66,9 @@ function App() {
             />
             <Redirect from="/" exact to={getHomePage()} />
             <Redirect to="/notFound" />
-          </Switch>
+          </Switch> 
         </div>
+        <Footer />
     </main>
   );
 }

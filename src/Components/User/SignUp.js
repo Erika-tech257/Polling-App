@@ -37,7 +37,7 @@ const SignUp = (props) => {
     })
       .then((r) => r.json())
       .then((rObj) => props.updateToken(rObj.sessionToken, rObj.user.id));
-      //window.location.replace("/adminWelcomePage/James");
+      window.location.replace("/adminWelcomePage/Jessie");
   };
   return (
     <div className="mainDiv App-header">

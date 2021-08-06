@@ -8,16 +8,17 @@ class AdminWelcomePage extends Component {
     this.state = {
       currentPoll: {},
       previousPoll: [{}],
-      user: { firstName: 'George', lastName: 'Sackey' },
+      user: { firstName: 'Jessie', lastName: 'Brown' },
     };
   }
+
   render() {
     const pageActions = [
       {
         icon: <FaChartBar />,
         ctaPrefix: 'View',
         ctaSuffix: 'Poll',
-        ctaLinkAddress: '#',
+        ctaLinkAddress: '/pollingQuestions',
         ctaLinkText: 'Current',
       },
       {
@@ -25,13 +26,13 @@ class AdminWelcomePage extends Component {
         ctaPrefix: 'View',
         ctaSuffix: 'Results',
         ctaLinkAddress: '#',
-        ctaLinkText: 'Previous Poll',
+        ctaLinkText: 'Poll History',
       },
       {
         icon: <FaPenAlt />,
         ctaPrefix: 'Create a',
         ctaSuffix: '',
-        ctaLinkAddress: '#',
+        ctaLinkAddress: "/createPoll",
         ctaLinkText: 'New Poll',
       },
       {

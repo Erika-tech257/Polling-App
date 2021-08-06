@@ -1,0 +1,24 @@
+i.fa.fa-poll.icon, i.fa.fa-clipboard.icon {
+    background: none;
+    color: black;
+    position: relative;
+    top:-3px;
+  }
+
+.currentPoll {
+    position: relative;
+    display: flex;
+    flex-wrap: nowrap;
+    top: 30px;
+    
+}
+
+h5.mb-5.welcome-title{
+    position: relative;
+    top: 70px;
+}
+
+h1.admin-initials.m-6{
+    position: relative;
+    top: 50px;
+}
