@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { clearSession } from '../../Common/Utility';
 
+
 class LogOut extends Component {
   constructor(props) {
     super(props);
@@ -29,5 +30,6 @@ class LogOut extends Component {
     );
   }
 }
+
 
 export default LogOut;

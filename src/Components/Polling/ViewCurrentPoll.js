@@ -3,24 +3,22 @@ import "./ViewPoll.css";
 // import { withAuth } from "../../Common/Utility";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 
-
-
 const ViewCurrentPoll = (props) => {
   return (
-
     // <div>
     //   <ol><li>{props.survey.surveyTitle}</li></ol>
     //   <p>{props.survey.description}</p>
     // </div>
     <div className="VCP">
-
       <h2>ICP's Current Poll</h2>
       <br />
       <Form>
         <FormGroup tag="fieldset">
           <legend>June Poll Questions</legend>
           <FormGroup check>
-            <p>1. Would you like to participate in a co-worker's sporting event?</p>
+            <p>
+              1. Would you like to participate in a co-worker's sporting event?
+            </p>
             <Label check>
               <Input type="checkbox" name="radio1" /> Yes, I'd love to try!
             </Label>
@@ -40,7 +38,8 @@ const ViewCurrentPoll = (props) => {
           <FormGroup check>
             <p>2. What outdoor space would you like to see in the courtyard?</p>
             <Label check>
-              <Input type="checkbox" name="radio1" /> Flower garden and walking path
+              <Input type="checkbox" name="radio1" /> Flower garden and walking
+              path
             </Label>
           </FormGroup>
           <FormGroup check>
@@ -50,7 +49,8 @@ const ViewCurrentPoll = (props) => {
           </FormGroup>
           <FormGroup check disabled>
             <Label check>
-              <Input type="checkbox" name="radio1" /> Zen rock garden and benches
+              <Input type="checkbox" name="radio1" /> Zen rock garden and
+              benches
             </Label>
           </FormGroup>
 
@@ -58,7 +58,8 @@ const ViewCurrentPoll = (props) => {
           <FormGroup check>
             <p>3. What snacks are preferred for the break room?</p>
             <Label check>
-              <Input type="checkbox" name="radio1" /> Crunchy and salty are my bag!
+              <Input type="checkbox" name="radio1" /> Crunchy and salty are my
+              bag!
             </Label>
           </FormGroup>
           <FormGroup check>
@@ -73,13 +74,14 @@ const ViewCurrentPoll = (props) => {
           </FormGroup>
         </FormGroup>
       </Form>
+      <br />
 
       <Button
         className="btn btn-default btn-lg btn-submit mb-2"
         type="submit"
         // onClick={handleSubmit}
       >
-        Sign In
+        Submit
       </Button>
     </div>
   );

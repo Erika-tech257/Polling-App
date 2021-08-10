@@ -1,6 +1,9 @@
 import { Redirect } from 'react-router-dom';
 
+
 export const clearSession = () => localStorage.clear();
+
+
 
 export const withAuth = (Component) => {
   return () => {

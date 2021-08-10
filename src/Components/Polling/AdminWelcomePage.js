@@ -8,7 +8,7 @@ class AdminWelcomePage extends Component {
     this.state = {
       currentPoll: {},
       previousPoll: [{}],
-      user: { firstName: 'Jessie', lastName: 'Brown' },
+      user: { firstName: '', lastName: '' },
     };
   }
 
@@ -46,6 +46,7 @@ class AdminWelcomePage extends Component {
 
     return (
       <div className=" mainDiv App-header margin_top">
+    
         <h1 className="admin-initials m-6">
           {this.state.user.firstName.slice(0, 1) +
             this.state.user.lastName.slice(0, 1)}
