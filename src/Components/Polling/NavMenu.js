@@ -9,14 +9,14 @@ import {
   NavLink,
 } from "reactstrap";
 import "./NavMenu.css";
-import { Link } from "react-router-dom";
-import {
-  FaPoll,
-  FaUserCircle,
-  FaHome,
-  FaSignOutAlt,
-  FaBars,
-} from "react-icons/fa";
+// import { Link } from "react-router-dom";
+// import {
+//   FaPoll,
+//   FaUserCircle,
+//   FaHome,
+//   FaSignOutAlt,
+//   FaBars,
+// } from "react-icons/fa";
 import LogOut from "../User/LogOut";
 
 const NavMenu = (props) => {
@@ -26,18 +26,18 @@ const NavMenu = (props) => {
 
   return (
     <div>
-      <Navbar color="dark" dark expand="lg">
-        <NavbarBrand href="/">ShiTech</NavbarBrand>
+      <Navbar color="light" light expand="lg">
+        <NavbarBrand href="#">ShiTech</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink className="navbar-brand" href="/signup">
+              <NavLink className="navbar-brand" href="/userProfilePage/:firstName">
                 Home
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink className="navbar-brand" href="/adminWelcomePage/:name">
+              <NavLink className="navbar-brand" href="#">
                 Polls
               </NavLink>
             </NavItem>

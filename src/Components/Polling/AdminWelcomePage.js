@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import { FaChartBar, FaWpforms, FaPenAlt, FaCameraRetro } from 'react-icons/fa';
+import { FaClipboardCheck, FaPenAlt, FaPoll } from 'react-icons/fa';
 
 class AdminWelcomePage extends Component {
   constructor(props) {
@@ -15,14 +15,14 @@ class AdminWelcomePage extends Component {
   render() {
     const pageActions = [
       {
-        icon: <FaChartBar />,
+        icon: <FaPoll />,
         ctaPrefix: 'View',
         ctaSuffix: 'Poll',
         ctaLinkAddress: '/pollingQuestions',
         ctaLinkText: 'Current',
       },
       {
-        icon: <FaWpforms />,
+        icon: <FaClipboardCheck/>,
         ctaPrefix: 'View',
         ctaSuffix: 'Results',
         ctaLinkAddress: '#',
@@ -35,13 +35,7 @@ class AdminWelcomePage extends Component {
         ctaLinkAddress: "/createPoll",
         ctaLinkText: 'New Poll',
       },
-      {
-        icon: <FaCameraRetro />,
-        ctaPrefix: 'Edit',
-        ctaSuffix: '',
-        ctaLinkAddress: '#',
-        ctaLinkText: 'Account',
-      },
+ 
     ];
 
     return (
@@ -51,7 +45,7 @@ class AdminWelcomePage extends Component {
           {this.state.user.firstName.slice(0, 1) +
             this.state.user.lastName.slice(0, 1)}
         </h1>
-        <h4 className="m-5">What would you like to do?</h4>
+        <h4 className="m-5">{`Welcome,${this.state.user.firstName}`}</h4>
         <div className="admin-page-font-size">
           {pageActions.map((action, i) => (
             <div key={i} className="row row-cols-12 m-3">

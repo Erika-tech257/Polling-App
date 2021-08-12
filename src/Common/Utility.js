@@ -1,8 +1,15 @@
 import { Redirect } from 'react-router-dom';
 
+// export const currentID = localStorage.getItem('userID')
+// if (currentID) {
+//   this.setState({ CurrentUser: currentID})
+// }
+// export const updateUser = (firstName) => {
+//   localStorage.setItem('firstName', firstName)
+//   this.setState({CurrentUser: firstName})
+// }
 
-export const clearSession = () => localStorage.clear();
-
+export const clearSession = () => localStorage.clear()
 
 
 export const withAuth = (Component) => {
@@ -30,8 +37,8 @@ export const createAuthIdentity = (userInfo) => {
 
 export const getIsAdmin = () => localStorage.getItem('isAdmin');
 
-export const defaultHomePage = `/pollingQuestions`;
-export const adminHomePage = `/createPoll`;
+export const defaultHomePage = `/signin`;
+export const adminHomePage = `/adminWelcomPage/:firstName`;
 
 export const getHomePage = () =>
   getIsAdmin() ? adminHomePage : defaultHomePage;

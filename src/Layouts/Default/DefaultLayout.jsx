@@ -1,19 +1,21 @@
-import React, { useState } from 'react';
-import TopNavBar from './TopNavBar';
+import React from 'react';
+// import TopNavBar from './TopNavBar';
 import Footer from '../../Components/Footer';
 import { isLoggedIn } from '../../Common/Utility';
 import { Redirect } from 'react-router-dom';
+import NavMenu from '../../Components/Polling/NavMenu';
 
 const DefaultLayout = (props) => {
-  const [collapsed, setCollapsed] = useState(true);
+  // const [collapsed, setCollapsed] = useState(true);
 
-  const toggleNavbar = () => setCollapsed(!collapsed);
+  // const toggleNavbar = () => setCollapsed(!collapsed);
 
   return (
     <>
       {isLoggedIn() ? (
         <>
-          <TopNavBar collapsed={collapsed} toggleNavbar={toggleNavbar} />
+        <NavMenu />
+          {/* <div collapsed={collapsed} toggleNavbar={toggleNavbar} /> */}
           {props.children}
           <Footer />
         </>

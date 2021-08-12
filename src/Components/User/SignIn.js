@@ -6,7 +6,7 @@ import GoogleButton from "react-google-button";
 // import { createAuthIdentity, getHomePage } from "../../Common/Utility";
 
 const SignIn = (props) => {
-  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleSubmit = (e) => {
@@ -18,7 +18,7 @@ const SignIn = (props) => {
     //   "https://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/token";
 
     const body = {
-      username: username,
+      username: email,
       password: password,
     };
 
@@ -30,7 +30,7 @@ const SignIn = (props) => {
       body: JSON.stringify(body),
     })
       .then((r) => r.json())
-      .then((rObj) => props.updateToken(rObj.sessionToken, rObj.user.id));
+      .then((rObj) => props.updateToken(rObj.sessionToken, rObj.user.firstName));
   };
 
   return (
@@ -49,10 +49,10 @@ const SignIn = (props) => {
             <input
               className="input-field"
               type="text"
-              placeholder="Username"
-              name="username"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Email"
+              name="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
             />
           </div>
 
@@ -76,7 +76,7 @@ const SignIn = (props) => {
               <input type="checkbox" id="checkbox" name="checkbox" value="" />
               <label for="checkbox"> Remember Me</label>
               <span className="forgotPass">
-                <a href="#">FORGOT PASSWORD?</a>
+                <a href="/forogotPassword">FORGOT PASSWORD?</a>
               </span>
             </form>
           </div>
@@ -107,7 +107,7 @@ const SignIn = (props) => {
                 </span>
                 <div className="flex-container">
                   <h6> Don't Have An Account? </h6>
-                  <p className="createLink"><a href ="http://localhost:3000/signup ">Create Account</a></p>
+                  <p className="createLink"><a href ="/signup">Create Account</a></p>
                 </div>
               </div>
             </div>

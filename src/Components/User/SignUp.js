@@ -37,7 +37,7 @@ const SignUp = (props) => {
     })
       .then((r) => r.json())
       .then((rObj) => props.updateToken(rObj.sessionToken, rObj.user.id));
-      window.location.replace("/adminWelcomePage/Jessie");
+      window.location.replace(`/userProfilePage/${firstName}`);
   };
   return (
     <div className="mainDiv App-header">
@@ -160,7 +160,7 @@ const SignUp = (props) => {
                 <div className="flex-container">
                   <h6> Already Have An Account? </h6>
                   <p className="createLink">
-                    <a href="http://localhost:3000/signin ">Login Here</a>
+                    <a href="http://localhost:3000/signin">Login Here</a>
                   </p>
                 </div>
               </div>

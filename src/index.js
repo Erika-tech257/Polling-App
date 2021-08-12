@@ -7,12 +7,14 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.css';
 // import 'bulma/css/bulma.min.css'
 
+
+// index.js:1 Warning: Legacy context API has been detected within a strict-mode tree. Changed to React.Fragment to hide error
 ReactDOM.render(
-  <React.StrictMode>
+  <React.Fragment>
     <BrowserRouter>
     <App />
     </BrowserRouter>
-  </React.StrictMode>,
+  </React.Fragment>,
   document.getElementById('root')
 );
 

@@ -1,40 +1,67 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import "./UserProfilePage.css";
 import { FaPoll, FaClipboardCheck } from "react-icons/fa";
+import NavMenu from "./NavMenu";
+
 class UserProfilePage extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      currentPoll: {},
+      previousPoll: [{}],
+      user: { firstName: '', lastName: '' },
+    };
+    
   }
-  render() {
-    return (
-      <div className="mainDiv App-header margin_top">
-        <h1 className="admin-initials m-6">{}</h1>
-        <h5 className="mb-5 welcome-title">Welcome "Name"!</h5>
+      render() {
 
-        <div className="currentPoll">
-          <i class="fa fa-poll icon">
-            {" "}
-            <FaPoll />
-          </i>
-          <p>
-            <Link to="/pollingQuestions">Current</Link> Poll
-          </p>
-        </div>
 
-        <div className="currentPoll">
-          <i class="fa fa-clipboard icon">
-            {" "}
-            <FaClipboardCheck />
-          </i>
-          <p>
-            <Link to="#">Completed</Link> Polls
-          </p>
-        </div>
-      </div>
-    );
-  }
-}
-
+      
+        const pageActions = [
+          {
+            icon: <FaPoll />,
+            ctaPrefix: 'View',
+            ctaSuffix: 'Poll',
+            ctaLinkAddress: '/pollingQuestions',
+            ctaLinkText: 'Current',
+          },
+          {
+            icon: <FaClipboardCheck />,
+            ctaPrefix: 'View',
+            ctaSuffix: 'Results',
+            ctaLinkAddress: '#',
+            ctaLinkText: 'Poll History',
+          },
+      
+        ];
+    
+        return (
+          <div className = "main">
+            <NavMenu />
+          <div className=" mainDiv App-header margin_top">
+            <h1 className="admin-initials m-6">
+              {this.state.user.firstName.slice(0, 1) +
+                this.state.user.lastName.slice(0, 1)}
+            </h1>
+            <h4 className="m-5">{`Welcome,${this.state.user.firstName}`}</h4>
+            <div className="admin-page-font-size">
+              {pageActions.map((action, i) => (
+                <div key={i} className="row row-cols-12 m-3">
+                  <div className="col text-start">{action.icon}</div>
+                  <div className="col-10 text-start text-nowrap">
+                    <p>
+                      {' '}
+                      {action.ctaPrefix}{' '}
+                      <Link to={action.ctaLinkAddress}>{action.ctaLinkText}</Link>{' '}
+                      {action.ctaSuffix}{' '}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>       
+          </div>
+        );
+      }
+    }
 export default UserProfilePage;
