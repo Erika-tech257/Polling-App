@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from "react";
+import React, { Component} from "react";
 import { Link } from "react-router-dom";
 import { FaPoll, FaClipboardCheck } from "react-icons/fa";
 import NavMenu from "./NavMenu";
@@ -13,7 +13,7 @@ class UserProfilePage extends Component {
     this.state = {
       currentPoll: {},
       previousPoll: [{}],
-      user: { firstName: '', lastName: '' },   //Hard codded for the time being
+      user: { firstName: 'Jessie', lastName: 'Brown' },   //Hard codded for testing purposes
     }
   }
   render() {

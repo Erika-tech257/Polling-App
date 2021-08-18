@@ -21,8 +21,7 @@ const SignUp = (props) => {
 
     const url = 
       `${API_URL}/Account/Register`;
-    // const baseUrl =
-    //   "http://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/Api/Account/Register";
+    // const baseUrl = "http://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/Api/Account/Register";
 
     const reqBody = {
       firstName: firstName,

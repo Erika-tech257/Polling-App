@@ -13,9 +13,8 @@ const SignIn = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const url =  `${API_URL}/token`;
-    // const url =
-    //   "https://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/token";
+    const url =  'https://localhost:44303/token'
+    // const url = "https://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/token";
 
     const reqBody = {
       username: email,
