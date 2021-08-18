@@ -3,7 +3,8 @@ import "./SignIn.css";
 import { Button } from "reactstrap";
 import { FaUserCircle, FaLock } from "react-icons/fa";
 import GoogleButton from "react-google-button";
-// import { createAuthIdentity, getHomePage } from "../../Common/Utility";
+import { API_URL } from "../../Common/Environment";
+import { SignInUser } from "../../Common/Utility";
 
 const SignIn = (props) => {
   const [email, setEmail] = useState("");
@@ -12,26 +13,33 @@ const SignIn = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const url =
-      "https://localhost:44303/token";
+    const url =  `${API_URL}/token`;
     // const url =
     //   "https://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/token";
 
-    const body = {
+    const reqBody = {
       username: email,
-      password: password,
-    };
+      password: password
+     }
+
 
     fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(reqBody),
     })
       .then((r) => r.json())
-      .then((rObj) => props.updateToken(rObj.sessionToken, rObj.user.firstName));
+      .then((rObj) => {
+        SignInUser('yudndf7difhs9aj3r', 1)  
+        console.log(SignInUser)    //line 37 pass in random token and user id. Hard coded for testing purposes
+      })
+      .catch((error) => {
+        console.log("Login error", error)
+      })
   };
+
 
   return (
     <div className="mainDiv App-header">
@@ -70,15 +78,15 @@ const SignIn = (props) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-
+       
           <div className="flex-containerone">
-            <form className="checkbox">
+             <div className="checkbox"> 
               <input type="checkbox" id="checkbox" name="checkbox" value="" />
-              <label for="checkbox"> Remember Me</label>
+              <label htmlFor="checkbox"> Remember Me</label>
               <span className="forgotPass">
-                <a href="/forogotPassword">FORGOT PASSWORD?</a>
+                <a href="/forogotPassword">RESET PASSWORD?</a>
               </span>
-            </form>
+             </div> 
           </div>
           <br />
 

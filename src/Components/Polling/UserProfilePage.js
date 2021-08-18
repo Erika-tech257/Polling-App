@@ -1,7 +1,11 @@
-import React, { Component } from "react";
+import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FaPoll, FaClipboardCheck } from "react-icons/fa";
 import NavMenu from "./NavMenu";
+
+
+
+
 
 class UserProfilePage extends Component {
   constructor(props) {
@@ -9,31 +13,28 @@ class UserProfilePage extends Component {
     this.state = {
       currentPoll: {},
       previousPoll: [{}],
-      user: { firstName: '', lastName: '' },
-    };
-    
+      user: { firstName: '', lastName: '' },   //Hard codded for the time being
+    }
   }
-      render() {
-
-
-      
+  render() {
         const pageActions = [
           {
             icon: <FaPoll />,
-            ctaPrefix: 'View',
+            ctaPrefix: 'Vote on',
             ctaSuffix: 'Poll',
             ctaLinkAddress: '/pollingQuestions',
             ctaLinkText: 'Current',
           },
           {
             icon: <FaClipboardCheck />,
-            ctaPrefix: 'View',
-            ctaSuffix: 'Results',
+            ctaPrefix: 'View Results of',
+            ctaSuffix: 'Polls',
             ctaLinkAddress: '#',
-            ctaLinkText: 'Poll History',
+            ctaLinkText: 'Previous',
           },
       
         ];
+         
     
         return (
           <div className = "main">

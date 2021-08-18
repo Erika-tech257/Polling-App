@@ -3,6 +3,10 @@ import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { FaEnvelope, FaUserCircle, FaLock } from "react-icons/fa";
 import GoogleButton from "react-google-button";
+import { API_URL } from "../../Common/Environment";
+import { SignInUser } from "../../Common/Utility";
+
+
 
 const SignUp = (props) => {
   const [email, setEmail] = useState("");
@@ -15,29 +19,35 @@ const SignUp = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    const baseUrl =
-      "https://localhost:44303/Api/Account/Register";
+    const url = 
+      `${API_URL}/Account/Register`;
     // const baseUrl =
     //   "http://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/Api/Account/Register";
 
-    const body = {
+    const reqBody = {
       firstName: firstName,
       lastName: lastName, 
       email: email,
       password: password,
-      confirmPassword: confirmPassword,
-    };
+      confirmPassword: confirmPassword
+    }
 
-    fetch(baseUrl, {
+    fetch(url, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(body),
+      body: JSON.stringify(reqBody),
     })
       .then((r) => r.json())
-      .then((rObj) => props.updateToken(rObj.sessionToken, rObj.user.id));
-      window.location.replace(`/userProfilePage/${firstName}`);
+      .then((rObj) => {
+        SignInUser()
+        console.log(SignInUser)
+      })
+      .catch((error) => {
+        console.log("Signup error", error)
+      })
+      window.location.replace(`/userProfilePage/${firstName}`)
   };
   return (
     <div className="mainDiv App-header">
@@ -45,13 +55,13 @@ const SignUp = (props) => {
       <br />
       <div>
         <form className="signup">
-          <div class="input-container">
-            <i class="fa fa-user icon">
+          <div className="input-container">
+            <i className="fa fa-user icon">
               {" "}
               <FaUserCircle />
             </i>
             <input
-              class="input-field"
+              className="input-field"
               type="text"
               placeholder="First Name"
               name="firstName"
@@ -60,13 +70,13 @@ const SignUp = (props) => {
             />
           </div>
 
-          <div class="input-container">
-            <i class="fa fa-user icon">
+          <div className="input-container">
+            <i className="fa fa-user icon">
               {" "}
               <FaUserCircle />
             </i>
             <input
-              class="input-field"
+              className="input-field"
               type="text"
               placeholder="Last Name"
               name="lastName"
@@ -75,13 +85,13 @@ const SignUp = (props) => {
             />
           </div>
 
-          <div class="input-container">
-            <i class="fa fa-envelope icon">
+          <div className="input-container">
+            <i className="fa fa-envelope icon">
               {" "}
               <FaEnvelope />
             </i>
             <input
-              class="input-field"
+              className="input-field"
               type="text"
               placeholder="Email"
               name="email"
@@ -90,13 +100,13 @@ const SignUp = (props) => {
             />
           </div>
 
-          <div class="input-container">
-            <i class="fa fa-key icon">
+          <div className="input-container">
+            <i className="fa fa-key icon">
               {" "}
               <FaLock />
             </i>
             <input
-              class="input-field"
+              className="input-field"
               type="password"
               placeholder="Password"
               name="password"
@@ -105,13 +115,13 @@ const SignUp = (props) => {
             />
           </div>
 
-          <div class="input-container">
-            <i class="fa fa-key icon">
+          <div className="input-container">
+            <i className="fa fa-key icon">
               {" "}
               <FaLock />
             </i>
             <input
-              class="input-field"
+              className="input-field"
               type="password"
               placeholder="Confirm Password"
               name="password"
@@ -124,7 +134,7 @@ const SignUp = (props) => {
             <p className="admintext"> Enter 4 Digit Admin PIN </p>
             <input
               type="text"
-              class="pin"
+              className="pin"
               name="pin"
               maxLength="4"
               size="4"
@@ -132,9 +142,9 @@ const SignUp = (props) => {
             />
           </div>
         
-          <div class="container">
-            <div class="row">
-              <div class="col text-center">
+          <div className="container">
+            <div className="row">
+              <div className="col text-center">
                 <Button
                   className="btn btn-default btn-lg btn-submit mb-2"
                   type="submit"

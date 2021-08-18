@@ -1,2 +1,2 @@
-export let Base_API_URL = '';
+export let API_URL = "https://localhost:44303/api";
 

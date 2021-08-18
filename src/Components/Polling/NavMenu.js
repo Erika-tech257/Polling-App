@@ -32,7 +32,7 @@ const NavMenu = (props) => {
         <Collapse isOpen={isOpen} navbar>
           <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink className="navbar-brand" href="/userProfilePage/:firstName">
+              <NavLink className="navbar-brand" href="/userProfilePage/:name">
                 Home
               </NavLink>
             </NavItem>
@@ -48,9 +48,9 @@ const NavMenu = (props) => {
             </NavItem>
             <NavItem>
               {/* <LogOut /> */}
-              <NavLink className="navbar-brand" href="#">
+               <NavLink className="navbar-brand" href="#">
                 Logout
-              </NavLink>
+              </NavLink> 
             </NavItem>
           </Nav>
         </Collapse>

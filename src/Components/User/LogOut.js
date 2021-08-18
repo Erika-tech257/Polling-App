@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import { clearSession } from '../../Common/Utility';
-
+import React, { Component } from "react";
+import { clearSession } from "../../Common/Utility";
+import { NavLink, NavItem } from "reactstrap";
 
 class LogOut extends Component {
   constructor(props) {
@@ -13,23 +13,22 @@ class LogOut extends Component {
   signOutUser = () => {
     if (this.state.user) {
       clearSession();
-      this.props.history.replace('/signin');
+      this.props.history.replace("/signin");
     }
   };
-
   render() {
     return (
       <>
-        {!!localStorage.getItem('token') ? (
-          <button className="button is-info mt-1">Log Out</button>
-        ) : (
-          null
-        )}
-        
+        {!!localStorage.getItem("token") ? (
+          <NavItem>
+            <NavLink className="navbar-brand" href="#">
+              Logout
+            </NavLink>
+          </NavItem>
+        ) : null}
       </>
     );
   }
 }
-
 
 export default LogOut;

@@ -1,5 +1,6 @@
+import React from "react";
 import "./App.css";
-import { Redirect, Switch, Route } from "react-router-dom";
+import { Redirect, Switch, Route, useParams } from "react-router-dom";
 import SignUp from "../src/Components/User/SignUp";
 import SignIn from "../src/Components/User/SignIn";
 import AdminWelcomePage from "./Components/Polling/AdminWelcomePage";
@@ -15,10 +16,15 @@ import AppRoute from "./Layouts/AppRoute";
 import Footer from "./Components/Footer";
 import ForgotPassword from "./Components/User/ForgotPassword";
 import NavMenu from "./Components/Polling/NavMenu";
+// import { Nav } from "reactstrap";
+
+
 
 function App() {
   const getUserLayout = () =>
     !isLoggedIn() ? GuestLayout : getIsAdmin() ? AdminLayout : DefaultLayout;
+    //If not logged in view app as guest, or if logged in as admin display admin, if not admin display default layout(employee)
+    //
 
   return (
     <main className="container text-center">
@@ -35,9 +41,14 @@ function App() {
             path="/signup"
             component={SignUp}
             layout={GuestLayout}
+          />
+          <Route exact 
+          path="/forogotPassword" 
+          component={ForgotPassword} 
+          layout = {GuestLayout}
           /> */}
-        {/* grab user's name using route parameters */}
-        {/* <AppRoute
+          {/* grab user's name using route parameters */}
+          {/* <AppRoute
             exact
             path="/userProfile/:name"
             component={UserProfilePage}
@@ -69,8 +80,9 @@ function App() {
           <Redirect from="/" exact to={getHomePage()} />
           <Redirect to="/notFound" />
         </Switch> */}
-        {/* <NavMenu /> */}
-        <Switch>
+      
+        
+      <Switch>
           <Route exact path="/signin" component={SignIn} />
 
           <Route exact path="/signup" component={SignUp} />
@@ -79,13 +91,14 @@ function App() {
 
           <Route
             exact
-            path="/userProfilePage/:firstName"
+            path="/userProfilePage/:name"
             component={UserProfilePage}
+            
           />
 
           <Route
             exact
-            path="/adminWelcomPage/:firstName"
+            path="/adminWelcomPage/:name"
             component={AdminWelcomePage}
           />
 
@@ -97,11 +110,11 @@ function App() {
 
           <Redirect from ="/" exact to = {getHomePage()} />
         </Switch> 
-        {/* <ForgotPassword /> */}
       </div>
       <Footer />
     </main>
   );
 }
+
 
 export default App;

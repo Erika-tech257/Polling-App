@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
-import { FaLock } from "react-icons/fa";
+import { FaKey } from "react-icons/fa";
 import "./ForgotPassword.css"
+import { API_URL } from "../../Common/Environment";
 
 const ForgotPassword = () => {
   const [newPassword, setNewPassword] = useState("");
@@ -11,11 +12,32 @@ const ForgotPassword = () => {
     e.preventDefault();
 
     // const url = "http://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/Api/Account/SetPassword"
+    const url = `${API_URL}/Account/SetPassword`
+
+    const reqBody ={
+      newPassword: newPassword,
+      confirmPassword: confirmPassword
+    }
+
+    fetch(url, {
+      method: "POST", 
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(reqBody),
+    })
+    .then((r) => r.json())
+    .then((data)=>{
+      //code needs to go here
+    })
+    .catch((error) =>{
+      console.log("Password reset failed", error)
+    })
   };
 
   return (
 <div className="mainDiv App-header">
-      <header className="sub-title">New Password</header>
+      <header className="sub-title">Reset Password</header>
       <br />
       <div>
         <form className="signin">
@@ -24,7 +46,7 @@ const ForgotPassword = () => {
           <div className="input-container">
             <i className="fa fa-user icon">
               {" "}
-              <FaLock />
+              <FaKey />
             </i>
             <input
               className="input-field"
@@ -39,7 +61,7 @@ const ForgotPassword = () => {
           <div className="input-container">
             <i className="fa fa-key icon">
               {" "}
-              <FaLock />
+              <FaKey />
             </i>
             <input
               className="input-field"
