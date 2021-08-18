@@ -1,7 +1,7 @@
 import React from 'react';
 // import TopNavBar from './TopNavBar';
 import Footer from '../../Components/Footer';
-import { isLoggedIn } from '../../Common/Utility';
+import { isLoggedIn } from '../../Common/Library';
 import { Redirect } from 'react-router-dom';
 import NavMenu from '../../Components/Polling/NavMenu';
 

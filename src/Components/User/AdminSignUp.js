@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Button, FormGroup, Input, InputGroup, Label } from 'reactstrap';
-import {withAuth} from '../../Common/Utility'
+import {withAuth} from '../../Common/Library'
 
 class AdminSignUP extends Component {
   constructor(props) {

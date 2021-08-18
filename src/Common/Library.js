@@ -1,6 +1,7 @@
 import { Redirect } from 'react-router-dom';
 
 
+
 export const clearSession = () => 
   localStorage.clear()
  
@@ -18,6 +19,7 @@ export const SignInUser = (token, id) => {
   localStorage.setItem('token', 'token'); 
   localStorage.setItem('userId', id)
 }
+
 
 // export const SignInUser = ({ history }) => {
 //   localStorage.setItem('token', 'same-login-token');  //first param is key, Hard coded for right now, needs to be token

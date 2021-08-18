@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { clearSession } from "../../Common/Utility";
+import { clearSession } from "../../Common/Library";
 import { NavLink, NavItem } from "reactstrap";
 
 class LogOut extends Component {

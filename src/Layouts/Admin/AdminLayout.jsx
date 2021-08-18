@@ -1,5 +1,5 @@
 import React from 'react';
-import { isLoggedIn } from '../../Common/Utility';
+import { isLoggedIn } from '../../Common/Library';
 import { Redirect } from 'react-router-dom';
 import NavMenu from '../../Components/Polling/NavMenu';
 

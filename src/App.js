@@ -7,7 +7,7 @@ import AdminWelcomePage from "./Components/Polling/AdminWelcomePage";
 import UserProfilePage from "./Components/Polling/UserProfilePage";
 import ViewCurrentPoll from "./Components/Polling/ViewCurrentPoll";
 import CreatePollQuestions from "./Components/Polling/CreatePollQuestions";
-import { getHomePage, getIsAdmin, isLoggedIn } from "./Common/Utility";
+import { getHomePage, getIsAdmin, isLoggedIn } from "./Common/Library";
 import AdminLayout from "./Layouts/Admin/AdminLayout";
 import GuestLayout from "./Layouts/Guest/GuestLayout";
 import DefaultLayout from "./Layouts/Default/DefaultLayout";

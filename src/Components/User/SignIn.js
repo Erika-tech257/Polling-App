@@ -3,7 +3,7 @@ import "./SignIn.css";
 import { Button } from "reactstrap";
 import { FaUserCircle, FaLock } from "react-icons/fa";
 import GoogleButton from "react-google-button";
-import { SignInUser } from "../../Common/Utility";
+import { SignInUser } from "../../Common/Library";
 
 const SignIn = (props) => {
   const [email, setEmail] = useState("");
@@ -30,7 +30,7 @@ const SignIn = (props) => {
     })
       .then((r) => r.json())
       .then((rObj) => {
-        SignInUser('', )  
+        SignInUser( )  
         console.log(SignInUser)    //line 34 pass in random token and user id. Hard coded for testing purposes
       })
       .catch((error) => {
