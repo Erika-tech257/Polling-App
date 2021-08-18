@@ -3,7 +3,6 @@ import "./SignIn.css";
 import { Button } from "reactstrap";
 import { FaUserCircle, FaLock } from "react-icons/fa";
 import GoogleButton from "react-google-button";
-import { API_URL } from "../../Common/Environment";
 import { SignInUser } from "../../Common/Utility";
 
 const SignIn = (props) => {
@@ -31,8 +30,8 @@ const SignIn = (props) => {
     })
       .then((r) => r.json())
       .then((rObj) => {
-        SignInUser('yudndf7difhs9aj3r', 1)  
-        console.log(SignInUser)    //line 37 pass in random token and user id. Hard coded for testing purposes
+        SignInUser('', )  
+        console.log(SignInUser)    //line 34 pass in random token and user id. Hard coded for testing purposes
       })
       .catch((error) => {
         console.log("Login error", error)

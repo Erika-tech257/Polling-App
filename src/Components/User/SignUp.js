@@ -40,7 +40,7 @@ const SignUp = (props) => {
     })
       .then((r) => r.json())
       .then((rObj) => {
-        SignInUser()
+        SignInUser(rObj.token, rObj.id)
         console.log(SignInUser)
       })
       .catch((error) => {
