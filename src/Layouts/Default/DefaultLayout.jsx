@@ -3,7 +3,7 @@ import React from 'react';
 import Footer from '../../Components/Footer';
 import { isLoggedIn } from '../../Common/Library';
 import { Redirect } from 'react-router-dom';
-import NavMenu from '../../Components/Polling/NavMenu';
+import NavMenu from '../../Components/Navbar/NavMenu';
 
 const DefaultLayout = (props) => {
   // const [collapsed, setCollapsed] = useState(true);

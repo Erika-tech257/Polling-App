@@ -1,7 +1,7 @@
 import React, { Component} from "react";
 import { Link } from "react-router-dom";
 import { FaPoll, FaClipboardCheck } from "react-icons/fa";
-import NavMenu from "./NavMenu";
+import NavMenu from "../Navbar/NavMenu";
 
 
 
@@ -38,7 +38,6 @@ class UserProfilePage extends Component {
     
         return (
           <div className = "main">
-            <NavMenu />
           <div className=" mainDiv App-header margin_top">
             <h1 className="admin-initials m-6">
               {this.state.user.firstName.slice(0, 1) +

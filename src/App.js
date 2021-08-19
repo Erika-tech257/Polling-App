@@ -1,6 +1,11 @@
 import React from "react";
 import "./App.css";
-import { Redirect, Switch, Route, useParams } from "react-router-dom";
+import {
+  BrowserRouter as Router,
+  Redirect,
+  Switch,
+  Route,
+} from "react-router-dom";
 import SignUp from "../src/Components/User/SignUp";
 import SignIn from "../src/Components/User/SignIn";
 import AdminWelcomePage from "./Components/Polling/AdminWelcomePage";
@@ -15,19 +20,17 @@ import NotFound from "./Common/NotFound";
 import AppRoute from "./Layouts/AppRoute";
 import Footer from "./Components/Footer";
 import ForgotPassword from "./Components/User/ForgotPassword";
-import NavMenu from "./Components/Polling/NavMenu";
+import NavMenu from "./Components/Navbar/NavMenu";
 // import { Nav } from "reactstrap";
-
-
 
 function App() {
   const getUserLayout = () =>
     !isLoggedIn() ? GuestLayout : getIsAdmin() ? AdminLayout : DefaultLayout;
-    //If not logged in view app as guest, or if logged in as admin display admin, if not admin display default layout(employee)
-    //
+  //If not logged in view app as guest, or if logged in as admin display admin, if not admin display default layout(employee)
+  //
 
   return (
-    <main className="container text-center">
+    <main className = "container text-center">
       <div>
         {/* <Switch>
           <AppRoute
@@ -47,8 +50,8 @@ function App() {
           component={ForgotPassword} 
           layout = {GuestLayout}
           /> */}
-          {/* grab user's name using route parameters */}
-          {/* <AppRoute
+        {/* grab user's name using route parameters */}
+        {/* <AppRoute
             exact
             path="/userProfile/:name"
             component={UserProfilePage}
@@ -80,41 +83,43 @@ function App() {
           <Redirect from="/" exact to={getHomePage()} />
           <Redirect to="/notFound" />
         </Switch> */}
-      
-        
-      <Switch>
-          <Route exact path="/signin" component={SignIn} />
 
-          <Route exact path="/signup" component={SignUp} />
+        <Router>
+          <NavMenu />
+          <Switch>
+            <Route exact path="/signin" component={SignIn} />
 
-          <Route exact path="/forogotPassword" component={ForgotPassword} />
+            <Route exact path="/signup" component={SignUp} />
 
-          <Route
-            exact
-            path="/userProfilePage/:name"
-            component={UserProfilePage}
-            
-          />
+           
 
-          <Route
-            exact
-            path="/adminWelcomPage/:name"
-            component={AdminWelcomePage}
-          />
+            <Route exact path="/forogotPassword" component={ForgotPassword} />
 
-          <Route exact path="/pollingQuestions" component={ViewCurrentPoll} />
+            <Route
+              exact
+              path="/userProfilePage/:name"
+              component={UserProfilePage}
+            />
 
-          <Route exact path="/createPoll" component={CreatePollQuestions} />
+            <Route
+              exact
+              path="/adminWelcomPage/:name"
+              component={AdminWelcomePage}
+            />
 
-          <Route exact path = "/notFound" component ={NotFound} />
+            <Route exact path="/pollingQuestions" component={ViewCurrentPoll} />
 
-          <Redirect from ="/" exact to = {getHomePage()} />
-        </Switch> 
+            <Route exact path="/createPoll" component={CreatePollQuestions} />
+
+            <Route exact path="/notFound" component={NotFound} />
+
+            <Redirect from="/" exact to={getHomePage()} />
+          </Switch>
+        </Router>
       </div>
       <Footer />
     </main>
   );
 }
-
 
 export default App;
