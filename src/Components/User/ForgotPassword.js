@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "reactstrap";
-import { FaKey } from "react-icons/fa";
+import { GiKeyLock } from "react-icons/gi";
 import "./ForgotPassword.css"
 import { API_URL } from "../../Common/Environment";
 
@@ -46,7 +46,7 @@ const ForgotPassword = () => {
           <div className="input-container">
             <i className="fa fa-user icon">
               {" "}
-              <FaKey />
+              <GiKeyLock />
             </i>
             <input
               className="input-field"
@@ -61,7 +61,7 @@ const ForgotPassword = () => {
           <div className="input-container">
             <i className="fa fa-key icon">
               {" "}
-              <FaKey />
+              <GiKeyLock />
             </i>
             <input
               className="input-field"

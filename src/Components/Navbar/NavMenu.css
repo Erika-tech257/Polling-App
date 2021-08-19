@@ -16,12 +16,11 @@
 }
 
 .navbar {
-    background-color: #060b26;
+    background-color: white;
     height: 100%;
     display: flex;
     justify-content: start;
     align-items: center;
-    
 }
 
 .menu-bars {
@@ -31,7 +30,8 @@
 }
 
 .nav-menu {
-    background-color: #060b26;
+    background-color: #ECF0F1 ;
+    box-shadow: 2px 0px #B3B6B7 ; 
     width: 250px;
     height: 100vh;
     display: flex;
@@ -60,7 +60,7 @@
 
 .nav-text a {
     text-decoration: none;
-    color: #f5f5f5;
+    color: black;
     font-size: 18px;
     width: 95%;
     height: 100%;
@@ -77,6 +77,7 @@
 
 .nav-menu-items {
     width: 100%;
+    list-style-type: none;
 }
 
 .nav-toggle {

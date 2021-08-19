@@ -38,6 +38,7 @@ class UserProfilePage extends Component {
     
         return (
           <div className = "main">
+            <NavMenu />
           <div className=" mainDiv App-header margin_top">
             <h1 className="admin-initials m-6">
               {this.state.user.firstName.slice(0, 1) +

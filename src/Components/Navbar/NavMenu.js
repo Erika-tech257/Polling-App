@@ -20,7 +20,7 @@ const NavMenu = (props) => {
 
   return (
     <div>
-    <IconContext.Provider value = {{ color: '#fff' }}>
+    <IconContext.Provider value = {{ color: "#0AA7DB" }}>
       <div className ="navbar">
         <Link to = "#" className='menu-bars'>
           <FaIcons.FaBars onClick ={showSidebar} />
@@ -46,35 +46,6 @@ const NavMenu = (props) => {
         </ul>
       </nav>
       </IconContext.Provider>
-      {/* <Navbar color="light" light expand="lg">
-        <NavbarBrand href="#">ShiTech</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto" navbar>
-            <NavItem>
-              <NavLink className="navbar-brand" href="/userProfilePage/:name">
-                Home
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="navbar-brand" href="#">
-                Polls
-              </NavLink>
-            </NavItem>
-            <NavItem>
-              <NavLink className="navbar-brand" href="#">
-                Account
-              </NavLink>
-            </NavItem>
-            <NavItem> */}
-              {/* <LogOut /> */}
-               {/* <NavLink className="navbar-brand" href="#">
-                Logout
-              </NavLink> 
-            </NavItem>
-          </Nav>
-        </Collapse>
-      </Navbar> */}
     </div>
   );
 };

@@ -85,7 +85,7 @@ function App() {
         </Switch> */}
 
         <Router>
-          <NavMenu />
+         
           <Switch>
             <Route exact path="/signin" component={SignIn} />
 
