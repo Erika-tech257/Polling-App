@@ -13,7 +13,7 @@ class UserProfilePage extends Component {
     this.state = {
       currentPoll: {},
       previousPoll: [{}],
-      user: { firstName: 'Jessie', lastName: 'Brown' },   //Hard codded for testing purposes
+      user: { firstName: '', lastName: '' },   //Hard codded for testing purposes
     }
   }
   render() {
@@ -38,7 +38,7 @@ class UserProfilePage extends Component {
     
         return (
           <div className = "main">
-            <NavMenu />
+            {/* <NavMenu /> */}
           <div className=" mainDiv App-header margin_top">
             <h1 className="admin-initials m-6">
               {this.state.user.firstName.slice(0, 1) +

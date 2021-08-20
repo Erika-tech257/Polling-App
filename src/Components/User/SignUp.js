@@ -40,8 +40,7 @@ const SignUp = (props) => {
     })
       .then((r) => r.json())
       .then((rObj) => {
-        SignInUser(rObj.token, rObj.id)
-        console.log(SignInUser)
+        props.SignInUser(rObj.token, rObj.id)
       })
       .catch((error) => {
         console.log("Signup error", error)

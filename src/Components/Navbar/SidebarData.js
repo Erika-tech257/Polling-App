@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as BiIcons from "react-icons/bi";
@@ -24,7 +24,7 @@ export const SidebarData = [
     },
     {
         title: 'Sign Out', 
-        path: '/',
+        path: '/Logout',
         icon: <BiIcons.BiLogOut />,
         cName: 'nav-text'  
     },

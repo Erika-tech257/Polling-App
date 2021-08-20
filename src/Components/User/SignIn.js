@@ -13,6 +13,7 @@ const SignIn = (props) => {
     e.preventDefault();
 
     const url =  'https://localhost:44303/token'
+
     // const url = "https://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/token";
 
     const reqBody = {
@@ -30,14 +31,13 @@ const SignIn = (props) => {
     })
       .then((r) => r.json())
       .then((rObj) => {
-        SignInUser( )  
-        console.log(SignInUser)    //line 34 pass in random token and user id. Hard coded for testing purposes
+        props.SignInUser(rObj.token, rObj.id)  
+          //line 34 pass in random token and user id. Hard coded for testing purposes
       })
       .catch((error) => {
         console.log("Login error", error)
       })
   };
-
 
   return (
     <div className="mainDiv App-header">
@@ -76,7 +76,7 @@ const SignIn = (props) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-       
+  
           <div className="flex-containerone">
              <div className="checkbox"> 
               <input type="checkbox" id="checkbox" name="checkbox" value="" />
@@ -87,7 +87,7 @@ const SignIn = (props) => {
              </div> 
           </div>
           <br />
-
+  
           <div className="container">
             <div className="row">
               <div className="col text-center">
@@ -121,7 +121,9 @@ const SignIn = (props) => {
         </form>
       </div>
     </div>
+          
   );
 };
+
 
 export default SignIn;

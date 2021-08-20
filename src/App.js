@@ -21,13 +21,17 @@ import AppRoute from "./Layouts/AppRoute";
 import Footer from "./Components/Footer";
 import ForgotPassword from "./Components/User/ForgotPassword";
 import NavMenu from "./Components/Navbar/NavMenu";
-// import { Nav } from "reactstrap";
+import LogOut from "./Components/User/LogOut";
+
+
 
 function App() {
-  const getUserLayout = () =>
-    !isLoggedIn() ? GuestLayout : getIsAdmin() ? AdminLayout : DefaultLayout;
+  // const getUserLayout = () =>
+  //   !isLoggedIn() ? GuestLayout : getIsAdmin() ? AdminLayout : DefaultLayout;
   //If not logged in view app as guest, or if logged in as admin display admin, if not admin display default layout(employee)
   //
+
+
 
   return (
     <main className = "container text-center">
@@ -85,15 +89,15 @@ function App() {
         </Switch> */}
 
         <Router>
-         
+         <NavMenu />
           <Switch>
             <Route exact path="/signin" component={SignIn} />
 
             <Route exact path="/signup" component={SignUp} />
 
-           
-
             <Route exact path="/forogotPassword" component={ForgotPassword} />
+            
+            <Route exact path = "/logout" component = {LogOut} />
 
             <Route
               exact
@@ -121,5 +125,11 @@ function App() {
     </main>
   );
 }
+
+const Home = () => (
+  <div>
+    <h1>Home Page</h1>
+  </div>
+)
 
 export default App;

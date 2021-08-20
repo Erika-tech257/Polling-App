@@ -8,6 +8,7 @@ import { IconContext } from "react-icons";
 
 
 
+
 const NavMenu = (props) => {
 
   const [sidebar, setSidebar] = useState(false)
@@ -21,6 +22,7 @@ const NavMenu = (props) => {
   return (
     <div>
     <IconContext.Provider value = {{ color: "#0AA7DB" }}>
+  
       <div className ="navbar">
         <Link to = "#" className='menu-bars'>
           <FaIcons.FaBars onClick ={showSidebar} />
