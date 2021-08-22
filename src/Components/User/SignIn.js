@@ -3,14 +3,20 @@ import "./SignIn.css";
 import { Button } from "reactstrap";
 import { FaUserCircle, FaLock } from "react-icons/fa";
 import GoogleButton from "react-google-button";
-import { SignInUser } from "../../Common/Library";
+import { SignInUser, withAuth } from "../../Common/Library";
+import { useHistory} from "react-router-dom";
+
 
 const SignIn = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
+  let history = useHistory()
 
   const handleSubmit = (e) => {
+    history.push({withAuth})
     e.preventDefault();
+    
 
     const url =  'https://localhost:44303/token'
 
@@ -25,17 +31,19 @@ const SignIn = (props) => {
     fetch(url, {
       method: "POST",
       headers: {
+        "Accept": "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(reqBody),
     })
       .then((r) => r.json())
       .then((rObj) => {
-        props.SignInUser(rObj.token, rObj.id)  
+        console.log(rObj)
+        SignInUser(rObj.token, rObj.userId) 
           //line 34 pass in random token and user id. Hard coded for testing purposes
       })
       .catch((error) => {
-        console.log("Login error", error)
+        console.log(error)
       })
   };
 

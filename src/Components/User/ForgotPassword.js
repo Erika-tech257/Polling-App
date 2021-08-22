@@ -4,6 +4,7 @@ import { GiKeyLock } from "react-icons/gi";
 import "./ForgotPassword.css"
 import { API_URL } from "../../Common/Environment";
 
+
 const ForgotPassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect,useState} from "react";
 import "./App.css";
 import {
   BrowserRouter as Router,
@@ -25,7 +25,40 @@ import LogOut from "./Components/User/LogOut";
 
 
 
-function App() {
+const App= () => {
+
+  const [sessionToken, setSessionToken] = useState(undefined);
+  const [currentUser, setCurrentUser] = useState(undefined);
+  
+  useEffect(
+    () => {
+      const token = localStorage.getItem('token')
+      if(token) {
+        setSessionToken(token)
+      }
+    }, [] // empty bracket fixes code continuously running. 
+  )
+
+  useEffect(
+    () => {
+      const currentID = localStorage.getItem('userID');
+      if(currentID) {
+        setCurrentUser(currentID);
+      }
+    }, []
+  )
+
+  const updateToken = (newToken, userID) => {
+    setSessionToken(newToken); 
+    localStorage.setItem('token', newToken);
+    localStorage.setItem('userID', userID);
+  }
+
+  const clearToken = () => {
+    setSessionToken(undefined)
+    setCurrentUser(undefined)
+    localStorage.clear()
+  }
   // const getUserLayout = () =>
   //   !isLoggedIn() ? GuestLayout : getIsAdmin() ? AdminLayout : DefaultLayout;
   //If not logged in view app as guest, or if logged in as admin display admin, if not admin display default layout(employee)
@@ -87,12 +120,13 @@ function App() {
           <Redirect from="/" exact to={getHomePage()} />
           <Redirect to="/notFound" />
         </Switch> */}
-
+        
+     
         <Router>
-         <NavMenu />
+         <NavMenu clearToken={clearToken}/>
           <Switch>
-            <Route exact path="/signin" component={SignIn} />
-
+          <Route exact path="/signin" component={SignIn} />
+      
             <Route exact path="/signup" component={SignUp} />
 
             <Route exact path="/forogotPassword" component={ForgotPassword} />

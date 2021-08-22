@@ -3,9 +3,9 @@ import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { FaEnvelope, FaUserCircle, FaLock } from "react-icons/fa";
 import GoogleButton from "react-google-button";
+import { SignInUser, createAuthIdentity } from "../../Common/Library";
+import { useHistory} from "react-router-dom";
 import { API_URL } from "../../Common/Environment";
-import { SignInUser } from "../../Common/Library";
-
 
 
 const SignUp = (props) => {
@@ -15,37 +15,41 @@ const SignUp = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
+  const history = useHistory()
 
   const handleSubmit = (e) => {
+    history.push('/userProfilePage/:name')
     e.preventDefault();
 
     const url = 
-      `${API_URL}/Account/Register`;
+    `${API_URL}/Account/Register`;
     // const baseUrl = "http://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/Api/Account/Register";
 
-    const reqBody = {
-      firstName: firstName,
-      lastName: lastName, 
-      email: email,
-      password: password,
-      confirmPassword: confirmPassword
-    }
-
-    fetch(url, {
+      const reqBody = {
+        firstName: firstName,
+        lastName: lastName, 
+        email: email,
+        password: password,
+        confirmPassword: confirmPassword
+      }
+ 
+     fetch(url, {
       method: "POST",
       headers: {
+        "Accept": "application/json",
         "Content-Type": "application/json",
       },
       body: JSON.stringify(reqBody),
     })
       .then((r) => r.json())
       .then((rObj) => {
-        props.SignInUser(rObj.token, rObj.id)
+        console.log(rObj)
+       SignInUser(rObj.token, rObj.userId)
       })
-      .catch((error) => {
-        console.log("Signup error", error)
+      .catch(error => {
+        console.log(error)
       })
-      window.location.replace(`/userProfilePage/${firstName}`)
+   
   };
   return (
     <div className="mainDiv App-header">
@@ -137,6 +141,7 @@ const SignUp = (props) => {
               maxLength="4"
               size="4"
               value=""
+              onChange={(e) => e.target.value}
             />
           </div>
         
@@ -179,4 +184,5 @@ const SignUp = (props) => {
     </div>
   );
 };
+
 export default SignUp;
