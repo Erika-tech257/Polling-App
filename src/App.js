@@ -25,42 +25,8 @@ import LogOut from "./Components/User/LogOut";
 
 
 
-const App= () => {
-
-  const [sessionToken, setSessionToken] = useState(undefined);
-  const [currentUser, setCurrentUser] = useState(undefined);
-  
-  useEffect(
-    () => {
-      const token = localStorage.getItem('token')
-      if(token) {
-        setSessionToken(token)
-      }
-    }, [] // empty bracket fixes code continuously running. 
-  )
-
-  useEffect(
-    () => {
-      const currentID = localStorage.getItem('userID');
-      if(currentID) {
-        setCurrentUser(currentID);
-      }
-    }, []
-  )
-
-  const updateToken = (newToken, userID) => {
-    setSessionToken(newToken); 
-    localStorage.setItem('token', newToken);
-    localStorage.setItem('userID', userID);
-  }
-
-  const clearToken = () => {
-    setSessionToken(undefined)
-    setCurrentUser(undefined)
-    localStorage.clear()
-  }
-  // const getUserLayout = () =>
-  //   !isLoggedIn() ? GuestLayout : getIsAdmin() ? AdminLayout : DefaultLayout;
+function App () {
+   const getUserLayout = () => (!isLoggedIn() ? GuestLayout : getIsAdmin() ? AdminLayout : DefaultLayout);
   //If not logged in view app as guest, or if logged in as admin display admin, if not admin display default layout(employee)
   //
 
@@ -123,7 +89,11 @@ const App= () => {
         
      
         <Router>
-         <NavMenu clearToken={clearToken}/>
+          <div className = "App">
+         <NavMenu />
+
+         <div className = "auth-wrapper">
+           <div className = "auth-innner">
           <Switch>
           <Route exact path="/signin" component={SignIn} />
       
@@ -153,17 +123,14 @@ const App= () => {
 
             <Redirect from="/" exact to={getHomePage()} />
           </Switch>
+          </div>
+          </div>
+          </div>
         </Router>
       </div>
       <Footer />
     </main>
   );
 }
-
-const Home = () => (
-  <div>
-    <h1>Home Page</h1>
-  </div>
-)
 
 export default App;

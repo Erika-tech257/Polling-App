@@ -20,7 +20,6 @@ export const SignInUser = (token, id) => {
   localStorage.setItem('userId', id)
 }
 
-
 // export const SignInUser = ({ history }) => {
 //   localStorage.setItem('token', 'same-login-token');  //first param is key, Hard coded for right now, needs to be token
   // history.push('/profile/mansa'); //redirect user to a particular page, refers to browser history only can use for local

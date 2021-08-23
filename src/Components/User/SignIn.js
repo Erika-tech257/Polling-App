@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from 'axios';
 import "./SignIn.css";
 import { Button } from "reactstrap";
 import { FaUserCircle, FaLock } from "react-icons/fa";
@@ -22,29 +23,37 @@ const SignIn = (props) => {
 
     // const url = "https://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/token";
 
-    const reqBody = {
+    const data = {
       username: email,
       password: password
      }
 
+     console.log(data)
 
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(reqBody),
-    })
-      .then((r) => r.json())
-      .then((rObj) => {
-        console.log(rObj)
-        SignInUser(rObj.token, rObj.userId) 
-          //line 34 pass in random token and user id. Hard coded for testing purposes
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+     axios.post(url, data)
+     .then(res => {
+       localStorage.setItem('token', res.data.token)
+     }).catch(err => {
+       console.log(err)
+     })
+
+
+    // fetch(url, {
+    //   method: "POST",
+    //   headers: {
+    //     "Accept": "application/json",
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(reqBody),
+    // })
+    //   .then((r) => r.json())
+    //   .then((rObj) => {
+    //     SignInUser(rObj.token, rObj.userId) 
+          // pass in random token and user id. Hard coded for testing purposes in SignInUser
+      // })
+      // .catch((error) => {
+      //   console.log(error)
+      // })
   };
 
   return (

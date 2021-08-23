@@ -1,12 +1,12 @@
 import "./Signup.css";
+import axios from 'axios';
 import React, { useState } from "react";
 import { Button } from "reactstrap";
 import { FaEnvelope, FaUserCircle, FaLock } from "react-icons/fa";
 import GoogleButton from "react-google-button";
-import { SignInUser, createAuthIdentity } from "../../Common/Library";
-import { useHistory} from "react-router-dom";
+import { SignInUser} from "../../Common/Library";
+import { useHistory } from "react-router-dom";
 import { API_URL } from "../../Common/Environment";
-
 
 const SignUp = (props) => {
   const [email, setEmail] = useState("");
@@ -15,41 +15,49 @@ const SignUp = (props) => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
 
-  const history = useHistory()
+  const history = useHistory();
 
   const handleSubmit = (e) => {
-    history.push('/userProfilePage/:name')
+    history.push("/userProfilePage/:name");
     e.preventDefault();
+    console.log("button clicked")
 
-    const url = 
-    `${API_URL}/Account/Register`;
+    const url = `${API_URL}/Account/Register`;
     // const baseUrl = "http://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/Api/Account/Register";
 
-      const reqBody = {
-        firstName: firstName,
-        lastName: lastName, 
-        email: email,
-        password: password,
-        confirmPassword: confirmPassword
+    const data = {
+      firstName: firstName,
+      lastName: lastName,
+      email: email,
+      password: password,
+      confirmPassword: confirmPassword,
+    };
+    console.log(data)
+
+    axios.post(url, data)
+    .then(res => {
+      console.log(res)
+    }).catch(
+      err => {
+        console.log(err)
       }
- 
-     fetch(url, {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(reqBody),
-    })
-      .then((r) => r.json())
-      .then((rObj) => {
-        console.log(rObj)
-       SignInUser(rObj.token, rObj.userId)
-      })
-      .catch(error => {
-        console.log(error)
-      })
-   
+    )
+
+    // fetch(url, {
+    //   method: "POST",
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json"
+    //   },
+    //   body: JSON.stringify(data),
+    // })
+    //   .then((r) => r.json())
+    //   .then((rObj) => {
+    //     SignInUser(rObj.token, rObj.userId);
+    //   })
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
   };
   return (
     <div className="mainDiv App-header">
@@ -68,7 +76,8 @@ const SignUp = (props) => {
               placeholder="First Name"
               name="firstName"
               value={firstName}
-              onChange={(e) => setFirstName(e.target.value)}
+              onChange={(e) => {setFirstName(e.target.value)
+              }}
             />
           </div>
 
@@ -83,7 +92,10 @@ const SignUp = (props) => {
               placeholder="Last Name"
               name="lastName"
               value={lastName}
-              onChange={(e) => setLastName(e.target.value)}
+              onChange={(e) => {
+                setLastName(e.target.value)
+         
+              }}
             />
           </div>
 
@@ -98,7 +110,10 @@ const SignUp = (props) => {
               placeholder="Email"
               name="email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => {
+                setEmail(e.target.value);
+                
+              }}
             />
           </div>
 
@@ -113,7 +128,9 @@ const SignUp = (props) => {
               placeholder="Password"
               name="password"
               value={password}
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => {
+                setPassword(e.target.value)
+              }}
             />
           </div>
 
@@ -128,10 +145,12 @@ const SignUp = (props) => {
               placeholder="Confirm Password"
               name="password"
               value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              onChange={(e) => {
+                setConfirmPassword(e.target.value)
+              }}
             />
           </div>
-         
+
           <div className="input-containerone">
             <p className="admintext"> Enter 4 Digit Admin PIN </p>
             <input
@@ -144,7 +163,7 @@ const SignUp = (props) => {
               onChange={(e) => e.target.value}
             />
           </div>
-        
+
           <div className="container">
             <div className="row">
               <div className="col text-center">
