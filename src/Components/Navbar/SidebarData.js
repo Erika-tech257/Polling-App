@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as BiIcons from "react-icons/bi";

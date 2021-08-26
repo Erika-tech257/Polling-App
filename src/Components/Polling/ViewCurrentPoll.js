@@ -1,5 +1,4 @@
 import React from "react";
-import "./ViewPoll.css";
 // import { withAuth } from "../../Common/Utility";
 import { Button, Form, FormGroup, Label, Input } from "reactstrap";
 

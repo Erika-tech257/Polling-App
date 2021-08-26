@@ -14,6 +14,7 @@ const SignUp = (props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
+  const [admin, setAdmin] = useState(false)
 
   const history = useHistory();
 
@@ -31,10 +32,15 @@ const SignUp = (props) => {
       email: email,
       password: password,
       confirmPassword: confirmPassword,
+      admin: false
     };
     console.log(data)
 
-    axios.post(url, data)
+    const headers = {
+      "Content-Type": "application/x-www-form-urlencoded"
+    }
+
+    axios.post(url, data, headers)
     .then(res => {
       console.log(res)
     }).catch(
@@ -46,14 +52,14 @@ const SignUp = (props) => {
     // fetch(url, {
     //   method: "POST",
     //   headers: {
-    //     Accept: "application/json",
-    //     "Content-Type": "application/json"
+    //     Accept: "application/x-www-form-urlencoded",
+    //     "Content-Type": "application/x-www-form-urlencoded"
     //   },
     //   body: JSON.stringify(data),
     // })
     //   .then((r) => r.json())
     //   .then((rObj) => {
-    //     SignInUser(rObj.token, rObj.userId);
+    //     console.log(rObj)
     //   })
     //   .catch((error) => {
     //     console.log(error);

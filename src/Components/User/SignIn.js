@@ -1,61 +1,60 @@
 import React, { useState } from "react";
-import axios from 'axios';
+import axiosInstance from "axios";
 import "./SignIn.css";
 import { Button } from "reactstrap";
 import { FaUserCircle, FaLock } from "react-icons/fa";
 import GoogleButton from "react-google-button";
-import { SignInUser, withAuth } from "../../Common/Library";
-import { useHistory} from "react-router-dom";
+import { withAuth } from "../../Common/Library";
+import { useHistory } from "react-router-dom";
+import qs from 'qs';
+import axios from "axios";
 
 
 const SignIn = (props) => {
-  const [email, setEmail] = useState("");
+  const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
-  
-  let history = useHistory()
+
+  let history = useHistory();
 
   const handleSubmit = (e) => {
-    history.push({withAuth})
+    history.push({ withAuth });
     e.preventDefault();
-    
 
-    const url =  'https://localhost:44303/token'
+    const url = "https://localhost:44303/token";
 
     // const url = "https://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/token";
 
-    const data = {
-      username: email,
-      password: password
-     }
+    //add header to axios application/x-www-form-urlencoded
+    //send grant_type with data value is password
 
-     console.log(data)
+     //var reqData = "username=ganesh&password=123456&grant_type=password";
 
-     axios.post(url, data)
-     .then(res => {
-       localStorage.setItem('token', res.data.token)
-     }).catch(err => {
-       console.log(err)
-     })
+    const reqData = {
+      username: username,
+      password: password,
+      grant_type:password
+    };
+    console.log(reqData);
 
+ 
 
-    // fetch(url, {
-    //   method: "POST",
-    //   headers: {
-    //     "Accept": "application/json",
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify(reqBody),
-    // })
-    //   .then((r) => r.json())
-    //   .then((rObj) => {
-    //     SignInUser(rObj.token, rObj.userId) 
-          // pass in random token and user id. Hard coded for testing purposes in SignInUser
-      // })
-      // .catch((error) => {
-      //   console.log(error)
-      // })
-  };
-
+  var bodyData =
+    "username=" +
+    username+
+    "&password=" +
+    password +
+    "&grant_type=password";
+  const response = axios({
+    url: url,
+    method: "post",
+    headers: {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
+    },
+    data: bodyData
+  });
+  console.log(response);
+    
+}
   return (
     <div className="mainDiv App-header">
       <header className="sub-title">Login</header>
@@ -74,8 +73,8 @@ const SignIn = (props) => {
               type="text"
               placeholder="Email"
               name="Email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              value={username}
+              onChange={(e) => setUserName(e.target.value)}
             />
           </div>
 
@@ -93,18 +92,18 @@ const SignIn = (props) => {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-  
+
           <div className="flex-containerone">
-             <div className="checkbox"> 
+            <div className="checkbox">
               <input type="checkbox" id="checkbox" name="checkbox" value="" />
               <label htmlFor="checkbox"> Remember Me</label>
               <span className="forgotPass">
                 <a href="/forogotPassword">RESET PASSWORD?</a>
               </span>
-             </div> 
+            </div>
           </div>
           <br />
-  
+
           <div className="container">
             <div className="row">
               <div className="col text-center">
@@ -130,7 +129,9 @@ const SignIn = (props) => {
                 </span>
                 <div className="flex-container">
                   <h6> Don't Have An Account? </h6>
-                  <p className="createLink"><a href ="/signup">Create Account</a></p>
+                  <p className="createLink">
+                    <a href="/signup">Create Account</a>
+                  </p>
                 </div>
               </div>
             </div>
@@ -138,9 +139,7 @@ const SignIn = (props) => {
         </form>
       </div>
     </div>
-          
   );
 };
-
 
 export default SignIn;
