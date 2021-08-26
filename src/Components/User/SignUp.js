@@ -36,11 +36,13 @@ const SignUp = (props) => {
     };
     console.log(data)
 
-    const headers = {
-      "Content-Type": "application/x-www-form-urlencoded"
+    const config = {
+      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
     }
 
-    axios.post(url, data, headers)
+  
+
+    axios.post(url, data, config)
     .then(res => {
       console.log(res)
     }).catch(

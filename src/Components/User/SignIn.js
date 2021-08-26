@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import axiosInstance from "axios";
 import "./SignIn.css";
 import { Button } from "reactstrap";
 import { FaUserCircle, FaLock } from "react-icons/fa";
 import GoogleButton from "react-google-button";
-import { withAuth } from "../../Common/Library";
 import { useHistory } from "react-router-dom";
-import qs from 'qs';
 import axios from "axios";
 
 
@@ -14,20 +11,20 @@ const SignIn = (props) => {
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
 
-  let history = useHistory();
+ const history = useHistory();
 
   const handleSubmit = (e) => {
-    history.push({ withAuth });
+    history.push('/userProfilePage/:name');
     e.preventDefault();
+    console.log("button clicked")
 
     const url = "https://localhost:44303/token";
 
     // const url = "https://pollsurveyapp-env.eba-jk6fyvwy.us-east-2.elasticbeanstalk.com/token";
 
     //add header to axios application/x-www-form-urlencoded
-    //send grant_type with data value is password
+    //send grant_type with data value as password
 
-     //var reqData = "username=ganesh&password=123456&grant_type=password";
 
     const reqData = {
       username: username,
@@ -36,24 +33,23 @@ const SignIn = (props) => {
     };
     console.log(reqData);
 
- 
+ const config = {"Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"}
 
-  var bodyData =
+  const bodyData =
     "username=" +
     username+
     "&password=" +
     password +
     "&grant_type=password";
-  const response = axios({
-    url: url,
-    method: "post",
-    headers: {
-      "Content-Type": "application/x-www-form-urlencoded; charset=UTF-8"
-    },
-    data: bodyData
-  });
-  console.log(response);
-    
+
+    axios.post(url, bodyData, config)
+    .then(res => {
+      console.log(res)
+    }).catch(
+      err => {
+        console.log(err)
+      }
+    )
 }
   return (
     <div className="mainDiv App-header">
